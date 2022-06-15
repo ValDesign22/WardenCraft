@@ -1,6 +1,7 @@
 package fr.valdesign.mcupdate;
 
 import com.mojang.logging.LogUtils;
+import fr.valdesign.mcupdate.items.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -20,6 +21,8 @@ public class MCUpdate
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        ModItems.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -35,6 +38,7 @@ public class MCUpdate
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            LOGGER.info("MC Update loaded successfully");
         }
     }
 }
