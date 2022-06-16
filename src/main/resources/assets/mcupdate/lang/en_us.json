@@ -4,5 +4,7 @@
   "item.mcupdate.echo_netherite_helmet": "Echo Netherite Helmet",
   "item.mcupdate.echo_netherite_chestplate": "Echo Netherite Chestplate",
   "item.mcupdate.echo_netherite_leggings": "Echo Netherite Leggings",
-  "item.mcupdate.echo_netherite_boots": "Echo Netherite Boots"
+  "item.mcupdate.echo_netherite_boots": "Echo Netherite Boots",
+
+  "itemGroup.mcupdatetab": "MC Update"
 }
