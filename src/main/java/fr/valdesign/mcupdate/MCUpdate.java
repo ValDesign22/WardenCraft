@@ -1,7 +1,7 @@
 package fr.valdesign.mcupdate;
 
 import com.mojang.logging.LogUtils;
-import fr.valdesign.mcupdate.items.ModItems;
+import fr.valdesign.mcupdate.item.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

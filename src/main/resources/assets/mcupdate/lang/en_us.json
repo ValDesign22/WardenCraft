@@ -1,3 +1,8 @@
 {
-  "item.mcupdate.echo_netherite": "Echo Netherite Ingot"
+  "item.mcupdate.echo_netherite_ingot": "Echo Netherite Ingot",
+
+  "item.mcupdate.echo_netherite_helmet": "Echo Netherite Helmet",
+  "item.mcupdate.echo_netherite_chestplate": "Echo Netherite Chestplate",
+  "item.mcupdate.echo_netherite_leggings": "Echo Netherite Leggings",
+  "item.mcupdate.echo_netherite_boots": "Echo Netherite Boots"
 }
