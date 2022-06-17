@@ -1,12 +1,11 @@
-package fr.valdesign.mcupdate.item;
+package fr.valdesign.wardencraft.item;
 
-import fr.valdesign.mcupdate.MCUpdate;
+import fr.valdesign.wardencraft.WardenCraft;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.function.Supplier;
@@ -58,7 +57,7 @@ public enum ModArmorMaterials implements ArmorMaterial {
     }
 
     public String getName() {
-        return MCUpdate.MOD_ID + ":" + this.name;
+        return WardenCraft.MOD_ID + ":" + this.name;
     }
 
     public float getToughness() {

@@ -1,7 +1,8 @@
-package fr.valdesign.mcupdate;
+package fr.valdesign.wardencraft;
 
 import com.mojang.logging.LogUtils;
-import fr.valdesign.mcupdate.item.ModItems;
+import fr.valdesign.wardencraft.block.ModBlocks;
+import fr.valdesign.wardencraft.item.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -11,17 +12,18 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-@Mod(MCUpdate.MOD_ID)
-public class MCUpdate
+@Mod(WardenCraft.MOD_ID)
+public class WardenCraft
 {
-    public static final String MOD_ID = "mcupdate";
+    public static final String MOD_ID = "wardencraft";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public MCUpdate()
+    public WardenCraft()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

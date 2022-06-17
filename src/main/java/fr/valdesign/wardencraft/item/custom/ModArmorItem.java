@@ -1,7 +1,7 @@
-package fr.valdesign.mcupdate.item.custom;
+package fr.valdesign.wardencraft.item.custom;
 
 import com.google.common.collect.ImmutableMap;
-import fr.valdesign.mcupdate.item.ModArmorMaterials;
+import fr.valdesign.wardencraft.item.ModArmorMaterials;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;

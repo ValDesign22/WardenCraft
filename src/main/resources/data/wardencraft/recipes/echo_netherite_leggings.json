@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "nnn",
+    "n n",
+    "n n"
+  ],
+  "key": {
+    "n": {
+      "item": "wardencraft:echo_netherite_ingot"
+    }
+  },
+  "result": {
+    "item": "wardencraft:echo_netherite_leggings",
+    "count": 1
+  }
+}
