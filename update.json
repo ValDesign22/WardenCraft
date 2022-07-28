@@ -1,10 +1,11 @@
 {
   "homepage": "https://github.com/ValRedstone/WardenCraft/releases",
   "1.19": {
+    "0.0.4-1.19": "Ore generation added (buggy)",
     "0.0.3-1.19": "New dimension"
   },
   "promos": {
-    "1.19-latest": "0.0.3-1.19",
+    "1.19-latest": "0.0.4-1.19",
     "1.19-recommended": "0.0.3-1.19"
   }
 }

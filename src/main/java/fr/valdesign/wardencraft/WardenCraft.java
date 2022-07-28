@@ -4,6 +4,8 @@ import com.mojang.logging.LogUtils;
 import fr.valdesign.wardencraft.block.ModBlocks;
 import fr.valdesign.wardencraft.item.ModItems;
 import fr.valdesign.wardencraft.world.dimension.ModDimensions;
+import fr.valdesign.wardencraft.world.feature.ModConfiguredFeatures;
+import fr.valdesign.wardencraft.world.feature.ModPlacedFeatures;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -27,6 +29,9 @@ public class WardenCraft
         ModBlocks.register(modEventBus);
 
         ModDimensions.register();
+
+        ModConfiguredFeatures.register(modEventBus);
+        ModPlacedFeatures.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
