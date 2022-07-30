@@ -42,7 +42,7 @@ authors="ValDesign" #optional
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-This is a forge mod that add custom features to minecraft 1.19
+WardenCraft is a Minecraft 1.19 mod that add a new armor and weapons with a custom dimension.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.wardencraft]] #optional
