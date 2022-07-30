@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "wardencraft:block/deepslate_echo_ore"
-  }
-}
