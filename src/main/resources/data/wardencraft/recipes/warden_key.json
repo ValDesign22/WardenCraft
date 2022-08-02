@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "wardencraft:echo_netherite_ingot"
+    },
+    {
+      "item": "wardencraft:warden_heart"
+    }
+  ],
+  "result": {
+    "item": "wardencraft:warden_key"
+  }
+}

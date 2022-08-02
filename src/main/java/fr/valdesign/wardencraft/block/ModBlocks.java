@@ -1,5 +1,6 @@
 package fr.valdesign.wardencraft.block;
 
+import fr.valdesign.wardencraft.block.custom.WardenDimPortalBlock;
 import fr.valdesign.wardencraft.item.ModCreativeModeTab;
 import fr.valdesign.wardencraft.WardenCraft;
 import fr.valdesign.wardencraft.item.ModItems;
@@ -27,6 +28,9 @@ public class ModBlocks {
                     .strength(6f).requiresCorrectToolForDrops(),
                     UniformInt.of(3, 7)), ModCreativeModeTab.WARDENCRAFT_TAB);
 
+    public static final RegistryObject<Block> WARDEN_PORTAL = registerBlockWithoutBlockItem("warden_portal",
+            WardenDimPortalBlock::new);
+
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn, tab);
@@ -36,6 +40,10 @@ public class ModBlocks {
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block,
                                                                             CreativeModeTab tab) {
         return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
+    }
+
+    private static <T extends Block> RegistryObject<T> registerBlockWithoutBlockItem(String name, Supplier<T> block) {
+        return BLOCKS.register(name, block);
     }
 
     public static void register(IEventBus eventBus) {

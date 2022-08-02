@@ -23,6 +23,10 @@ This mod works with [Forge](https://files.minecraftforge.net/net/minecraftforge/
     <img src="https://raw.githubusercontent.com/ValRedstone/WardenCraft/images/6.PNG" width="256" />
 </div>
 
+### Credits
+
+Thanks to [nu11une](https://github.com/nu11une)'s [mod](https://github.com/nu11une/wardenloot) for the warden heart texture.
+
 <style>
     .logo {
         display:flex;

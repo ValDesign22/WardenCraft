@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "axis=z": { "model": "wardencraft:block/warden_portal_ew" },
+    "axis=x": { "model": "wardencraft:block/warden_portal_ns" }
+  }
+}

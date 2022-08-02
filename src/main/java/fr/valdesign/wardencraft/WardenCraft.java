@@ -3,10 +3,13 @@ package fr.valdesign.wardencraft;
 import com.mojang.logging.LogUtils;
 import fr.valdesign.wardencraft.block.ModBlocks;
 import fr.valdesign.wardencraft.item.ModItems;
+import fr.valdesign.wardencraft.villager.ModPOIs;
 import fr.valdesign.wardencraft.world.dimension.ModDimensions;
 import fr.valdesign.wardencraft.world.feature.ModConfiguredFeatures;
 import fr.valdesign.wardencraft.world.feature.ModPlacedFeatures;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -32,6 +35,8 @@ public class WardenCraft
 
         ModConfiguredFeatures.register(modEventBus);
         ModPlacedFeatures.register(modEventBus);
+
+        ModPOIs.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

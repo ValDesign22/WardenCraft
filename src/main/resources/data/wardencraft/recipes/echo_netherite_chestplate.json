@@ -2,12 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "n n",
-    "nnn",
+    "nhn",
     "nnn"
   ],
   "key": {
     "n": {
       "item": "wardencraft:echo_netherite_ingot"
+    },
+    "h": {
+      "item": "wardencraft:warden_heart"
     }
   },
   "result": {

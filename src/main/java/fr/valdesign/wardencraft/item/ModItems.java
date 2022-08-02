@@ -2,6 +2,7 @@ package fr.valdesign.wardencraft.item;
 
 import fr.valdesign.wardencraft.WardenCraft;
 import fr.valdesign.wardencraft.item.custom.ModArmorItem;
+import fr.valdesign.wardencraft.item.custom.WardenKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
@@ -17,6 +18,10 @@ public class ModItems {
     // ITEMS
     public static final RegistryObject<Item> ECHO_NETHERITE_INGOT = ITEMS.register("echo_netherite_ingot",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.WARDENCRAFT_TAB)));
+    public static final RegistryObject<Item> WARDEN_HEART = ITEMS.register("warden_heart",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.WARDENCRAFT_TAB)));
+
+    public static final RegistryObject<Item> WARDEN_KEY = ITEMS.register("warden_key", WardenKey::new);
 
     // ARMORS
     public static final RegistryObject<Item> ECHO_NETHERITE_HELMET = ITEMS.register("echo_netherite_helmet",
