@@ -3,6 +3,7 @@ package fr.valdesign.wardencraft.item;
 import fr.valdesign.wardencraft.WardenCraft;
 import fr.valdesign.wardencraft.item.custom.ModArmorItem;
 import fr.valdesign.wardencraft.item.custom.WardenKey;
+import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;

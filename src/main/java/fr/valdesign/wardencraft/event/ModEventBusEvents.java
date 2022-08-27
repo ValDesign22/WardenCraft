@@ -6,7 +6,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
-import fr.valdesign.wardencraft.event.loot.WardenModifier;
+import fr.valdesign.wardencraft.event.loot.WardenLootModifier;
 
 import javax.annotation.Nonnull;
 
@@ -16,7 +16,7 @@ public class ModEventBusEvents {
     public static void registerModifierSerializers(@Nonnull final RegisterEvent event) {
         event.register(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, helper -> {
             helper.register(new ResourceLocation(WardenCraft.MOD_ID,"warden_loot_modifier"),
-                    WardenModifier.CODEC);
+                    WardenLootModifier.CODEC);
         });
     }
 }

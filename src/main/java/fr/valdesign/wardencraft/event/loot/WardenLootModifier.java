@@ -12,12 +12,12 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 
-public class WardenModifier extends LootModifier {
+public class WardenLootModifier extends LootModifier {
 
-    public static final Codec<WardenModifier> CODEC = RecordCodecBuilder.create(inst -> codecStart(inst)
-            .apply(inst, WardenModifier::new));
+    public static final Codec<WardenLootModifier> CODEC = RecordCodecBuilder.create(inst -> codecStart(inst)
+            .apply(inst, WardenLootModifier::new));
 
-    protected WardenModifier(LootItemCondition[] conditionsIn) {
+    protected WardenLootModifier(LootItemCondition[] conditionsIn) {
         super(conditionsIn);
     }
 
@@ -29,7 +29,7 @@ public class WardenModifier extends LootModifier {
     }
 
     @Override
-    public Codec<WardenModifier> codec() {
+    public Codec<WardenLootModifier> codec() {
         return CODEC;
     }
 }

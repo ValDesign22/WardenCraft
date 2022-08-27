@@ -10,5 +10,11 @@
 
   "block.wardencraft.deepslate_echo_ore": "Deepslate Echo Ore",
 
-  "itemGroup.wardencrafttab": "Warden Craft"
+  "itemGroup.wardencrafttab": "Warden Craft",
+
+  "key.category.wardencraft.wardencraft": "Warden Craft",
+  "key.wardencraft.drink_warden_blood": "Drink Warden Blood",
+
+  "message.wardencraft.drink_blood": "Drinking Blood",
+  "message.wardencraft.no_blood": "No warden hearth in your inventory!"
 }
