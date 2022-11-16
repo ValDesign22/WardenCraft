@@ -1,6 +1,7 @@
 package fr.valdesign.wardencraft.event;
 
 import fr.valdesign.wardencraft.WardenCraft;
+import fr.valdesign.wardencraft.networking.packet.SonicBoomUsagePacket;
 import fr.valdesign.wardencraft.client.WardenBloodHUDOverlay;
 import fr.valdesign.wardencraft.networking.ModMessages;
 import fr.valdesign.wardencraft.networking.packet.DrinkBloodC2SPacket;
@@ -20,6 +21,9 @@ public class ClientEvents {
             if(KeyBinding.DRINKING_KEY.consumeClick()) {
                 ModMessages.sendToServer(new DrinkBloodC2SPacket());
             }
+            if(KeyBinding.SONIC_BOOM_KEY.consumeClick()) {
+                ModMessages.sendToServer(new SonicBoomUsagePacket());
+            }
         }
     }
     @Mod.EventBusSubscriber(modid = WardenCraft.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -27,6 +31,7 @@ public class ClientEvents {
         @SubscribeEvent
         public static void onKeyRegister(RegisterKeyMappingsEvent event) {
             event.register(KeyBinding.DRINKING_KEY);
+            event.register(KeyBinding.SONIC_BOOM_KEY);
         }
 
         @SubscribeEvent

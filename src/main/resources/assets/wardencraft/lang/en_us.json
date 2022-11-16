@@ -14,7 +14,9 @@
 
   "key.category.wardencraft.wardencraft": "Warden Craft",
   "key.wardencraft.drink_warden_blood": "Drink Warden Blood",
+  "key.wardencraft.send_sonic_boom": "Send Sonic Boom",
 
   "message.wardencraft.drink_blood": "Drinking Blood",
-  "message.wardencraft.no_blood": "No warden hearth in your inventory!"
+  "message.wardencraft.no_blood": "No warden heart in your inventory!",
+  "message.wardencraft.already_full": "You warden blood bar stock is already full!"
 }

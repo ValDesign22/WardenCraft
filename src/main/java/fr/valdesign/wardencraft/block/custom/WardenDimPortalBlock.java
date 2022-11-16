@@ -24,7 +24,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
@@ -67,9 +66,7 @@ public class WardenDimPortalBlock extends Block {
         if (WardenDimPortalBlock$size != null && !onTrySpawnPortal(level, pos, WardenDimPortalBlock$size)) {
             WardenDimPortalBlock$size.placePortalBlocks();
             return true;
-        } else {
-            return false;
-        }
+        } else return false;
     }
 
     public static boolean onTrySpawnPortal(LevelAccessor world, BlockPos pos, WardenDimPortalBlock.Size size) {
@@ -94,9 +91,8 @@ public class WardenDimPortalBlock extends Block {
     @Nullable
     public WardenDimPortalBlock.Size isPortal(LevelAccessor level, BlockPos pos) {
         WardenDimPortalBlock.Size WardenDimPortalBlock$size = new Size(level, pos, Direction.Axis.X);
-        if (WardenDimPortalBlock$size.isValid() && WardenDimPortalBlock$size.portalBlockCount == 0) {
-            return WardenDimPortalBlock$size;
-        } else {
+        if (WardenDimPortalBlock$size.isValid() && WardenDimPortalBlock$size.portalBlockCount == 0) return WardenDimPortalBlock$size;
+        else {
             WardenDimPortalBlock.Size WardenDimPortalBlock$size1 = new Size(level, pos, Direction.Axis.Z);
             return WardenDimPortalBlock$size1.isValid() && WardenDimPortalBlock$size1.portalBlockCount == 0 ? WardenDimPortalBlock$size1 : null;
         }
@@ -113,13 +109,9 @@ public class WardenDimPortalBlock extends Block {
     @Override
     public void entityInside(BlockState state, Level worldIn, BlockPos pos, Entity entity) {
         if(!entity.isPassenger() && !entity.isVehicle() && entity.canChangeDimensions()) {
-            if(entity.isOnPortalCooldown()) {
-                entity.setPortalCooldown();
-            }
+            if(entity.isOnPortalCooldown()) entity.setPortalCooldown();
             else {
-                if(!entity.level.isClientSide() && !pos.equals(entity.portalEntrancePos)) {
-                    entity.portalEntrancePos = pos.immutable();
-                }
+                if(!entity.level.isClientSide() && !pos.equals(entity.portalEntrancePos)) entity.portalEntrancePos = pos.immutable();
                 Level entityWorld = entity.level;
                 if(entityWorld != null) {
                     MinecraftServer minecraftserver = entityWorld.getServer();
@@ -141,11 +133,9 @@ public class WardenDimPortalBlock extends Block {
 
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
-        if (rand.nextInt(100) == 0) {
-            worldIn.playLocalSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D,
-                    (double)pos.getZ() + 0.5D, SoundEvents.PORTAL_AMBIENT,
-                    SoundSource.BLOCKS, 0.5F, rand.nextFloat() * 0.4F + 0.8F, false);
-        }
+        if (rand.nextInt(100) == 0) worldIn.playLocalSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D,
+                (double)pos.getZ() + 0.5D, SoundEvents.PORTAL_AMBIENT,
+                SoundSource.BLOCKS, 0.5F, rand.nextFloat() * 0.4F + 0.8F, false);
 
         for(int i = 0; i < 4; ++i) {
             double x = (double)pos.getX() + rand.nextDouble();
@@ -230,9 +220,7 @@ public class WardenDimPortalBlock extends Block {
                 }
             }
 
-            if (this.bottomLeft != null) {
-                this.height = this.calculatePortalHeight();
-            }
+            if (this.bottomLeft != null) this.height = this.calculatePortalHeight();
 
         }
 
@@ -241,9 +229,7 @@ public class WardenDimPortalBlock extends Block {
             for(i = 0; i < 22; ++i) {
                 BlockPos blockpos = pos.relative(directionIn, i);
                 if(!this.canConnect(this.level.getBlockState(blockpos)) ||
-                        !(this.level.getBlockState(blockpos.below()).is(ModTags.Blocks.PORTAL_FRAME_BLOCKS))) {
-                    break;
-                }
+                        !(this.level.getBlockState(blockpos.below()).is(ModTags.Blocks.PORTAL_FRAME_BLOCKS))) break;
             }
 
             BlockPos framePos = pos.relative(directionIn, i);
@@ -264,25 +250,17 @@ public class WardenDimPortalBlock extends Block {
                 for(int i = 0; i < this.width; ++i) {
                     BlockPos blockpos = this.bottomLeft.relative(this.rightDir, i).above(this.height);
                     BlockState blockstate = this.level.getBlockState(blockpos);
-                    if (!this.canConnect(blockstate)) {
-                        break label56;
-                    }
+                    if (!this.canConnect(blockstate)) break label56;
 
                     Block block = blockstate.getBlock();
-                    if (block == ModBlocks.WARDEN_PORTAL.get()) {
-                        ++this.portalBlockCount;
-                    }
+                    if (block == ModBlocks.WARDEN_PORTAL.get()) ++this.portalBlockCount;
 
                     if (i == 0) {
                         BlockPos framePos = blockpos.relative(this.leftDir);
-                        if (!(this.level.getBlockState(framePos).is(ModTags.Blocks.PORTAL_FRAME_BLOCKS))) {
-                            break label56;
-                        }
+                        if (!(this.level.getBlockState(framePos).is(ModTags.Blocks.PORTAL_FRAME_BLOCKS))) break label56;
                     } else if (i == this.width - 1) {
                         BlockPos framePos = blockpos.relative(this.rightDir);
-                        if (!(this.level.getBlockState(framePos).is(ModTags.Blocks.PORTAL_FRAME_BLOCKS))) {
-                            break label56;
-                        }
+                        if (!(this.level.getBlockState(framePos).is(ModTags.Blocks.PORTAL_FRAME_BLOCKS))) break label56;
                     }
                 }
             }
@@ -295,9 +273,8 @@ public class WardenDimPortalBlock extends Block {
                 }
             }
 
-            if (this.height <= 21 && this.height >= 3) {
-                return this.height;
-            } else {
+            if (this.height <= 21 && this.height >= 3) return this.height;
+            else {
                 this.bottomLeft = null;
                 this.width = 0;
                 this.height = 0;

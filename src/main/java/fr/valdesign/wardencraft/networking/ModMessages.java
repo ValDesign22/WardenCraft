@@ -3,6 +3,7 @@ package fr.valdesign.wardencraft.networking;
 import fr.valdesign.wardencraft.WardenCraft;
 import fr.valdesign.wardencraft.networking.packet.DrinkBloodC2SPacket;
 import fr.valdesign.wardencraft.networking.packet.BloodDataSyncS2CPacket;
+import fr.valdesign.wardencraft.networking.packet.SonicBoomUsagePacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
@@ -34,6 +35,12 @@ public class ModMessages {
                 .decoder(BloodDataSyncS2CPacket::new)
                 .encoder(BloodDataSyncS2CPacket::toBytes)
                 .consumerMainThread(BloodDataSyncS2CPacket::handle)
+                .add();
+
+        net.messageBuilder(SonicBoomUsagePacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(SonicBoomUsagePacket::new)
+                .encoder(SonicBoomUsagePacket::toBytes)
+                .consumerMainThread(SonicBoomUsagePacket::handle)
                 .add();
     }
 
