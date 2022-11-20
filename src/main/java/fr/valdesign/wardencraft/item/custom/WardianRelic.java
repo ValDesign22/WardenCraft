@@ -29,10 +29,6 @@ public class WardianRelic extends Item {
 
                 Block block = context.getLevel().getBlockState(blockPos).getBlock();
 
-                // verify if the block is a wardian block
-
-
-
                 context.getLevel().playSound(context.getPlayer(), blockPos,
                         SoundEvents.PORTAL_TRIGGER, SoundSource.BLOCKS, 1.0f, 1.0f);
             }

@@ -3,6 +3,7 @@ package fr.valdesign.wardencraft.item;
 import fr.valdesign.wardencraft.WardenCraft;
 import fr.valdesign.wardencraft.item.custom.ModArmorItem;
 import fr.valdesign.wardencraft.item.custom.WardenKey;
+import fr.valdesign.wardencraft.item.custom.WardianRelic;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
@@ -30,6 +31,7 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.WARDENCRAFT_TAB)));
 
     public static final RegistryObject<Item> WARDEN_KEY = ITEMS.register("warden_key", WardenKey::new);
+    public static final RegistryObject<Item> WARDIAN_RELIC = ITEMS.register("wardian_relic", WardianRelic::new);
 
     // ARMORS
     public static final RegistryObject<Item> ECHO_NETHERITE_HELMET = ITEMS.register("echo_netherite_helmet",

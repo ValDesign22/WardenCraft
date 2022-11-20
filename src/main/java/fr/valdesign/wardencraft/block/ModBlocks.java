@@ -28,6 +28,11 @@ public class ModBlocks {
                     .strength(6f).requiresCorrectToolForDrops(),
                     UniformInt.of(3, 7)), ModCreativeModeTab.WARDENCRAFT_TAB);
 
+    public static final RegistryObject<Block> WARDIAN_BLOCK = registerBlock("wardian_block",
+            () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(6f).requiresCorrectToolForDrops()),
+                        ModCreativeModeTab.WARDENCRAFT_TAB);
+
     public static final RegistryObject<Block> WARDEN_PORTAL = registerBlockWithoutBlockItem("warden_portal",
             WardenDimPortalBlock::new);
 
