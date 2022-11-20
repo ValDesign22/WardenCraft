@@ -1,7 +1,6 @@
 package fr.valdesign.wardencraft.networking.packet;
 
 import fr.valdesign.wardencraft.blood.PlayerBloodProvider;
-import fr.valdesign.wardencraft.item.ModItems;
 import fr.valdesign.wardencraft.networking.ModMessages;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -13,9 +12,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
@@ -39,7 +36,9 @@ public class SonicBoomUsagePacket {
             assert player != null;
             ServerLevel level = player.getLevel();
 
-            if(hasEnoughWardenBlood(player)) {
+            if (!player.isShiftKeyDown()) return;
+
+            //if(hasEnoughWardenBlood(player)) {
                 player.sendSystemMessage(Component.translatable("Using effect").withStyle(ChatFormatting.DARK_AQUA));
                 level.playSound(null, player.getOnPos(), SoundEvents.WARDEN_SONIC_CHARGE, SoundSource.PLAYERS,
                         0.5F, level.random.nextFloat() * 0.1F + 0.9F);
@@ -58,53 +57,21 @@ public class SonicBoomUsagePacket {
                 int y = blockPos.getY();
                 int z = blockPos.getZ();
 
-                AtomicInteger radius = new AtomicInteger(3);
-                for (int i = 0; i < 3; i++) {
-                    level.getAllEntities().forEach(entity -> {
-                        if (entity.getType() == EntityType.ITEM) return;
+                AtomicInteger i = new AtomicInteger();
 
-                        if (entity.getType() == EntityType.PLAYER) {
-                            Iterable<ItemStack> armorSlots = entity.getArmorSlots();
-                            int equiped = 0;
-
-                            for (ItemStack armorSlot : armorSlots) {
-                                if (armorSlot.getItem() == ModItems.ECHO_NETHERITE_HELMET.get()) equiped++;
-                                if (armorSlot.getItem() == ModItems.ECHO_NETHERITE_CHESTPLATE.get()) equiped++;
-                                if (armorSlot.getItem() == ModItems.ECHO_NETHERITE_LEGGING.get()) equiped++;
-                                if (armorSlot.getItem() == ModItems.ECHO_NETHERITE_BOOTS.get()) equiped++;
-                            }
-
-                            if (equiped == 4) return;
-                        }
-
-                        if (entity.distanceToSqr(x, y, z) <= radius.get() * radius.get()) {
-                            entity.setDeltaMovement(entity.getDeltaMovement().add(0, 0.25, 0));
-                            entity.hurtMarked = true;
-                        }
-                    });
-
-                    for (int j = 0; j < 10; j++) {
-                        int nextX = Mth.floor(x) + level.random.nextInt(radius.get() * 2) - radius.get();
-                        int nextY = Mth.floor(y) + level.random.nextInt(radius.get() * 2) - radius.get();
-                        int nextZ = Mth.floor(z) + level.random.nextInt(radius.get() * 2) - radius.get();
-
-                        level.destroyBlock(new BlockPos(nextX, nextY, nextZ), false);
-
-                        System.out.println("x: " + nextX + " y: " + nextY + " z: " + nextZ);
-
-                        level.addParticle(ParticleTypes.EXPLOSION_EMITTER, nextX, nextY, nextZ, 0, 0, 0);
-                    }
-
-                    level.addParticle(ParticleTypes.SONIC_BOOM, x, y, z, 0, 0, 0);
-                    level.playSound(null, x, y, z, SoundEvents.WARDEN_SONIC_BOOM, SoundSource.PLAYERS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
-                    radius.getAndIncrement();
+                for (int j = 0; j < 10; j++) {
+                    level.addParticle(ParticleTypes.WITCH, player.getX(), player.getY() + 1, player.getZ(), 0, 0, 0);
                 }
-            } else {
-                player.sendSystemMessage(Component.translatable("Not enough warden blood.").withStyle(ChatFormatting.RED));
-                player.getCapability(PlayerBloodProvider.PLAYER_BLOOD).ifPresent(blood -> {
-                    ModMessages.sendToPlayer(new BloodDataSyncS2CPacket(blood.getBlood()), player);
-                });
-            }
+
+                for (int j = 0; j < 10; j++) {
+                    level.addParticle(ParticleTypes.WITCH, player.getX(), player.getY() + 1, player.getZ(), 0, 0, 0);
+                }
+            //} else {
+            //    player.sendSystemMessage(Component.translatable("Not enough warden blood.").withStyle(ChatFormatting.RED));
+            //    player.getCapability(PlayerBloodProvider.PLAYER_BLOOD).ifPresent(blood -> {
+            //        ModMessages.sendToPlayer(new BloodDataSyncS2CPacket(blood.getBlood()), player);
+            //    });
+            //}
         });
     }
 

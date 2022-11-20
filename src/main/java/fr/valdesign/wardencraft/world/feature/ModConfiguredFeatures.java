@@ -18,12 +18,13 @@ import java.util.List;
 public class ModConfiguredFeatures {
     public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURE = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, WardenCraft.MOD_ID);
 
-    public static final Supplier<List<OreConfiguration.TargetBlockState>> WARDENDIM_ECHO_ORE = Suppliers.memoize(() -> List.of(
+    public static final Supplier<List<OreConfiguration.TargetBlockState>> WARDENDIM_ECHO_ORES = Suppliers.memoize(() -> List.of(
+            OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, ModBlocks.DEEPSLATE_ECHO_ORE.get().defaultBlockState()),
             OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.DEEPSLATE_ECHO_ORE.get().defaultBlockState())
     ));
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> DEEPSLATE_ECHO_ORE = CONFIGURED_FEATURE.register("deepslate_echo_ore",
-            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(WARDENDIM_ECHO_ORE.get(), 7)));
+            () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(WARDENDIM_ECHO_ORES.get(), 7)));
 
     public static void register(IEventBus eventBus)
     {

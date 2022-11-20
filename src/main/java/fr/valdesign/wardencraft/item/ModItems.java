@@ -19,6 +19,13 @@ public class ModItems {
     // ITEMS
     public static final RegistryObject<Item> ECHO_NETHERITE_INGOT = ITEMS.register("echo_netherite_ingot",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.WARDENCRAFT_TAB)));
+
+    public static final RegistryObject<Item> ECHO_STAR = ITEMS.register("echo_star",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.WARDENCRAFT_TAB)));
+
+    public static final RegistryObject<Item> ECHO_BONE = ITEMS.register("echo_bone",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.WARDENCRAFT_TAB)));
+
     public static final RegistryObject<Item> WARDEN_HEART = ITEMS.register("warden_heart",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.WARDENCRAFT_TAB)));
 

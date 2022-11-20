@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "wardencraft:block/deepslate_echo_ore" }
+    "": {
+      "model": "wardencraft:block/deepslate_echo_ore"
+    }
   }
 }

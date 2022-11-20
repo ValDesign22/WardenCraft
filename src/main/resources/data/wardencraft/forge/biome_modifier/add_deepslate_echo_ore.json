@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "#minecraft:is_overworld",
+  "biomes": "#wardencraft:is_wardendim",
   "features": "wardencraft:deepslate_echo_ore_placed",
   "step": "underground_ores"
 }

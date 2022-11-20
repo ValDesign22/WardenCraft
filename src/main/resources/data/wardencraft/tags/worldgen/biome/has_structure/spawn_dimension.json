@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:dripstone_cave",
+    "#minecraft:deep_dark"
+  ]
+}
