@@ -1,6 +1,7 @@
 package fr.valdesign.wardencraft.block;
 
 import fr.valdesign.wardencraft.block.custom.WardenDimPortalBlock;
+import fr.valdesign.wardencraft.block.custom.WardianBlock;
 import fr.valdesign.wardencraft.item.ModCreativeModeTab;
 import fr.valdesign.wardencraft.WardenCraft;
 import fr.valdesign.wardencraft.item.ModItems;
@@ -29,9 +30,7 @@ public class ModBlocks {
                     UniformInt.of(3, 7)), ModCreativeModeTab.WARDENCRAFT_TAB);
 
     public static final RegistryObject<Block> WARDIAN_BLOCK = registerBlock("wardian_block",
-            () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
-                    .strength(6f).requiresCorrectToolForDrops()),
-                        ModCreativeModeTab.WARDENCRAFT_TAB);
+            WardianBlock::new, ModCreativeModeTab.WARDENCRAFT_TAB);
 
     public static final RegistryObject<Block> WARDEN_PORTAL = registerBlockWithoutBlockItem("warden_portal",
             WardenDimPortalBlock::new);

@@ -2,12 +2,15 @@ package fr.valdesign.wardencraft;
 
 import com.mojang.logging.LogUtils;
 import fr.valdesign.wardencraft.block.ModBlocks;
+import fr.valdesign.wardencraft.entities.ModEntities;
+import fr.valdesign.wardencraft.entities.client.WardianRenderer;
 import fr.valdesign.wardencraft.item.ModItems;
 import fr.valdesign.wardencraft.networking.ModMessages;
 import fr.valdesign.wardencraft.villager.ModPOIs;
 import fr.valdesign.wardencraft.world.dimension.ModDimensions;
 import fr.valdesign.wardencraft.world.feature.ModConfiguredFeatures;
 import fr.valdesign.wardencraft.world.feature.ModPlacedFeatures;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -18,6 +21,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+import software.bernie.geckolib3.GeckoLib;
 
 @Mod(WardenCraft.MOD_ID)
 public class WardenCraft
@@ -34,10 +38,14 @@ public class WardenCraft
 
         ModDimensions.register();
 
+        ModEntities.register(modEventBus);
+
         ModConfiguredFeatures.register(modEventBus);
         ModPlacedFeatures.register(modEventBus);
 
         ModPOIs.register(modEventBus);
+
+        GeckoLib.initialize();
 
         modEventBus.addListener(this::commonSetup);
 
@@ -68,6 +76,8 @@ public class WardenCraft
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             LOGGER.info("WardenCraft loaded successfully");
+
+            EntityRenderers.register(ModEntities.WARDIAN.get(), WardianRenderer::new);
         }
     }
 }

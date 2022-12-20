@@ -4,6 +4,7 @@
   "item.wardencraft.echo_bone": "Echo Bone",
   "item.wardencraft.warden_heart": "Warden Heart",
   "item.wardencraft.warden_key": "Warden Key",
+  "item.wardencraft.wardian_relic": "Warden Relic",
 
   "item.wardencraft.echo_netherite_helmet": "Echo Netherite Helmet",
   "item.wardencraft.echo_netherite_chestplate": "Echo Netherite Chestplate",
@@ -11,8 +12,11 @@
   "item.wardencraft.echo_netherite_boots": "Echo Netherite Boots",
 
   "block.wardencraft.deepslate_echo_ore": "Deepslate Echo Ore",
+  "block.wardencraft.wardian_block": "Wardian Block",
 
   "itemGroup.wardencrafttab": "Warden Craft",
+
+  "entity.wardencraft.wardian": "Wardian",
 
   "key.category.wardencraft.wardencraft": "Warden Craft",
   "key.wardencraft.drink_warden_blood": "Drink Warden Blood",

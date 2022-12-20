@@ -1,7 +1,10 @@
 package fr.valdesign.wardencraft.event;
 
 import fr.valdesign.wardencraft.WardenCraft;
+import fr.valdesign.wardencraft.entities.ModEntities;
+import fr.valdesign.wardencraft.entities.custom.WardianEntity;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -18,5 +21,10 @@ public class ModEventBusEvents {
             helper.register(new ResourceLocation(WardenCraft.MOD_ID,"warden_loot_modifier"),
                     WardenLootModifier.CODEC);
         });
+    }
+
+    @SubscribeEvent
+    public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
+        event.put(ModEntities.WARDIAN.get(), WardianEntity.setAttributes());
     }
 }

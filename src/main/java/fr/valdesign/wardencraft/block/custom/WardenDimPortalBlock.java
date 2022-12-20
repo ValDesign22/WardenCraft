@@ -44,6 +44,7 @@ public class WardenDimPortalBlock extends Block {
         super(Properties.of(Material.PORTAL)
                 .strength(-1F)
                 .noCollission()
+                .noOcclusion()
                 .lightLevel((state) -> 10)
                 .noLootTable()
         );
