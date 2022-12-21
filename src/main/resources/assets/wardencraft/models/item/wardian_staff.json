@@ -3,28 +3,15 @@
 	"textures": {
 		"0": "wardencraft:item/staff_stick",
 		"1": "wardencraft:item/staff_circle",
-		"2": "wardencraft:item/left_tendril",
-		"3": "wardencraft:item/right_tendril",
+		"3": "wardencraft:item/left_tendril",
+		"4": "wardencraft:item/right_tendril",
 		"particle": "wardencraft:item/staff_stick"
 	},
 	"elements": [
 		{
-			"name": "staff_stick",
-			"from": [7, 0, 7],
-			"to": [9, 23, 9],
-			"faces": {
-				"north": {"uv": [0, 0, 0.93644, 16.85597], "texture": "#0"},
-				"east": {"uv": [0.93644, 0, 1.87289, 16.85597], "texture": "#0"},
-				"south": {"uv": [1.87289, 0, 2.80933, 16.85597], "texture": "#0"},
-				"west": {"uv": [2.80933, 0, 3.74577, 16.85597], "texture": "#0"},
-				"up": {"uv": [4.68221, 0.93644, 3.74577, 0], "texture": "#0"},
-				"down": {"uv": [4.68221, 0.93644, 3.74577, 1.87289], "texture": "#0"}
-			}
-		},
-		{
 			"name": "staff_circle",
-			"from": [4, 24, 8],
-			"to": [12, 32, 8],
+			"from": [4.25, 24, 8],
+			"to": [12.25, 32, 8],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 24, 8]},
 			"faces": {
 				"north": {"uv": [0, 0, 4.74074, 4.74074], "texture": "#1"},
@@ -40,8 +27,8 @@
 			"from": [9, 18, 8],
 			"to": [17, 26, 8],
 			"faces": {
-				"north": {"uv": [0, 0, 4.99769, 4.99769], "texture": "#2"},
-				"south": {"uv": [0, 4.99583, 4.99769, 9.99352], "texture": "#2"}
+				"north": {"uv": [0, 0, 5.49769, 5.49769], "texture": "#3"},
+				"south": {"uv": [0, 5.99583, 5.49769, 11.49352], "texture": "#3"}
 			}
 		},
 		{
@@ -49,8 +36,21 @@
 			"from": [-1, 18, 8],
 			"to": [7, 26, 8],
 			"faces": {
-				"north": {"uv": [0, 0, 5.5, 5.5], "texture": "#3"},
-				"south": {"uv": [0, 6, 5.5, 11.5], "texture": "#3"}
+				"north": {"uv": [0, 0, 5.5, 5.5], "texture": "#4"},
+				"south": {"uv": [0, 6, 5.5, 11.5], "texture": "#4"}
+			}
+		},
+		{
+			"name": "staff_stick",
+			"from": [7, 0, 7],
+			"to": [9, 23, 9],
+			"faces": {
+				"north": {"uv": [0, 0, 0.89333, 16], "texture": "#0"},
+				"east": {"uv": [0.89333, 0, 1.77333, 16], "texture": "#0"},
+				"south": {"uv": [1.77333, 0, 2.66667, 16], "texture": "#0"},
+				"west": {"uv": [2.66667, 0, 3.54667, 16], "texture": "#0"},
+				"up": {"uv": [4.43778, 0.88089, 3.55689, 0], "texture": "#0"},
+				"down": {"uv": [4.43778, 0.88089, 3.55689, 1.77289], "texture": "#0"}
 			}
 		}
 	],
@@ -89,16 +89,5 @@
 			"translation": [-2, -2, 0],
 			"scale": [0.5, 0.5, 0.5]
 		}
-	},
-	"groups": [
-		{
-			"name": "group",
-			"origin": [0, 0, 0],
-			"color": 0,
-			"children": [0]
-		},
-		1,
-		2,
-		3
-	]
+	}
 }

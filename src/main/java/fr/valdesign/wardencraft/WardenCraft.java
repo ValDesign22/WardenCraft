@@ -2,6 +2,7 @@ package fr.valdesign.wardencraft;
 
 import com.mojang.logging.LogUtils;
 import fr.valdesign.wardencraft.block.ModBlocks;
+import fr.valdesign.wardencraft.enchantment.ModEnchantments;
 import fr.valdesign.wardencraft.entities.ModEntities;
 import fr.valdesign.wardencraft.entities.client.WardianRenderer;
 import fr.valdesign.wardencraft.item.ModItems;
@@ -44,6 +45,7 @@ public class WardenCraft
         ModPlacedFeatures.register(modEventBus);
 
         ModPOIs.register(modEventBus);
+        ModEnchantments.register(modEventBus);
 
         GeckoLib.initialize();
 

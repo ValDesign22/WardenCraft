@@ -25,5 +25,7 @@
 
   "message.wardencraft.drink_blood": "Drinking Blood",
   "message.wardencraft.no_blood": "No warden heart in your inventory!",
-  "message.wardencraft.already_full": "You warden blood bar stock is already full!"
+  "message.wardencraft.already_full": "You warden blood bar stock is already full!",
+
+  "enchantment.wardencraft.echolocation": "Echolocation"
 }

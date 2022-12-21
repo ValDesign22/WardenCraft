@@ -4,6 +4,7 @@ import fr.valdesign.wardencraft.WardenCraft;
 import fr.valdesign.wardencraft.item.custom.ModArmorItem;
 import fr.valdesign.wardencraft.item.custom.WardenKey;
 import fr.valdesign.wardencraft.item.custom.WardianRelic;
+import fr.valdesign.wardencraft.item.custom.WardianStaff;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -15,7 +16,6 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, WardenCraft.MOD_ID);
 
-    // ITEMS
     public static final RegistryObject<Item> ECHO_NETHERITE_INGOT = ITEMS.register("echo_netherite_ingot",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.WARDENCRAFT_TAB)));
 
@@ -28,13 +28,11 @@ public class ModItems {
     public static final RegistryObject<Item> WARDEN_HEART = ITEMS.register("warden_heart",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.WARDENCRAFT_TAB)));
 
-    public static final RegistryObject<Item> WARDIAN_STAFF = ITEMS.register("wardian_staff",
-            () -> new SwordItem(Tiers.NETHERITE, 0, 0, new SwordItem.Properties().tab(ModCreativeModeTab.WARDENCRAFT_TAB)));
+    public static final RegistryObject<Item> WARDIAN_STAFF = ITEMS.register("wardian_staff", WardianStaff::new);
 
     public static final RegistryObject<Item> WARDEN_KEY = ITEMS.register("warden_key", WardenKey::new);
     public static final RegistryObject<Item> WARDIAN_RELIC = ITEMS.register("wardian_relic", WardianRelic::new);
 
-    // ARMORS
     public static final RegistryObject<Item> ECHO_NETHERITE_HELMET = ITEMS.register("echo_netherite_helmet",
             () -> new ModArmorItem(ModArmorMaterials.ECHO_NETHERITE, EquipmentSlot.HEAD,
                     new Item.Properties().tab(ModCreativeModeTab.WARDENCRAFT_TAB)));
