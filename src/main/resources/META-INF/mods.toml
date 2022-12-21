@@ -1,14 +1,14 @@
 modLoader="javafml"
 loaderVersion="[41,)"
 license="MIT License"
-issueTrackerURL="https://github.com/ValRedstone/WardenCraft/issues/new"
+issueTrackerURL="https://github.com/ValDesign22/WardenCraft/issues/new"
 
 [[mods]]
 modId="wardencraft"
 version="${file.jarVersion}"
 displayName="Warden Craft"
-updateJSONURL="https://raw.githubusercontent.com/ValRedstone/WardenCraft/master/update.json"
-displayURL="https://github.com/ValRedstone/WardenCraft"
+updateJSONURL="https://raw.githubusercontent.com/ValDesign22/WardenCraft/master/update.json"
+displayURL="https://github.com/ValDesign22/WardenCraft"
 logoFile="wardencraft.png"
 credits="Thanks to Modding by Kaupenjoe on youtube for his tutorials"
 authors="ValDesign"

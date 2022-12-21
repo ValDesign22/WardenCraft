@@ -4,10 +4,8 @@ import fr.valdesign.wardencraft.WardenCraft;
 import fr.valdesign.wardencraft.item.custom.ModArmorItem;
 import fr.valdesign.wardencraft.item.custom.WardenKey;
 import fr.valdesign.wardencraft.item.custom.WardianRelic;
-import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -29,6 +27,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> WARDEN_HEART = ITEMS.register("warden_heart",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.WARDENCRAFT_TAB)));
+
+    public static final RegistryObject<Item> WARDIAN_STAFF = ITEMS.register("wardian_staff",
+            () -> new SwordItem(Tiers.NETHERITE, 0, 0, new SwordItem.Properties().tab(ModCreativeModeTab.WARDENCRAFT_TAB)));
 
     public static final RegistryObject<Item> WARDEN_KEY = ITEMS.register("warden_key", WardenKey::new);
     public static final RegistryObject<Item> WARDIAN_RELIC = ITEMS.register("wardian_relic", WardianRelic::new);

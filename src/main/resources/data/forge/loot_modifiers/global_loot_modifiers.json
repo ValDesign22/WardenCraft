@@ -1,6 +1,7 @@
 {
   "replace": false,
   "entries": [
-    "wardencraft:warden_loot_modifier"
+    "wardencraft:warden_loot_modifier",
+    "wardencraft:wardian_loot_modifier"
   ]
 }
