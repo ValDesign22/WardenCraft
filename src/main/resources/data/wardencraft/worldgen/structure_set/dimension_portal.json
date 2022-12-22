@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "wardencraft:dimension_portal",
+      "weight": 2
+    }
+  ],
+  "placement": {
+    "salt": 1637848483,
+    "spacing": 20,
+    "separation": 6,
+    "type": "minecraft:random_spread"
+  }
+}
