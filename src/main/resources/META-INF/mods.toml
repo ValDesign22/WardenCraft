@@ -5,8 +5,8 @@ issueTrackerURL="https://github.com/ValDesign22/WardenCraft/issues/new"
 
 [[mods]]
 modId="wardencraft"
-version="${file.jarVersion}"
-displayName="Warden Craft"
+version="0.0.7"
+displayName="WardenCraft"
 updateJSONURL="https://raw.githubusercontent.com/ValDesign22/WardenCraft/master/update.json"
 displayURL="https://github.com/ValDesign22/WardenCraft"
 logoFile="wardencraft.png"
@@ -29,3 +29,9 @@ WardenCraft is a Minecraft 1.19 mod that add a new armor and weapons with a cust
     versionRange="[1.19,1.20)"
     ordering="NONE"
     side="BOTH"
+# [[dependencies.wardencraft]]
+#     modId="geckolib"
+#     mandatory=true
+#     versionRange="[3.1.39,)"
+#     ordering="NONE"
+#     side="BOTH"
