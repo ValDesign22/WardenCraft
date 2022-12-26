@@ -40,7 +40,7 @@ public class WardianStaff extends Item {
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if(!level.isClientSide() && hand == InteractionHand.MAIN_HAND) {
             int enchantLvl = this.getEnchantmentLevel(player.getItemInHand(hand), ModEnchantments.ECHOLOCATION.get());
-            if (player.isShiftKeyDown()) chargeEcholocation(level, player, enchantLvl);
+            if (player.isShiftKeyDown()) chargeEcholocation(level, player);
             else {
                 echolocate(level, player, enchantLvl);
                 player.getCooldowns().addCooldown(this, 200);
@@ -90,6 +90,9 @@ public class WardianStaff extends Item {
                             if (!e.isDeadOrDying() && e.getUUID() != player.getUUID()) {
                                 e.addEffect(new MobEffectInstance(MobEffects.GLOWING, duration, 0, false, false));
                                 e.addEffect(new MobEffectInstance(MobEffects.DARKNESS, duration, 0, false, false));
+
+                                level.playSound(null, e.getX(), e.getY(), e.getZ(), SoundEvents.WARDEN_NEARBY_CLOSEST, player.getSoundSource(), 1.0F, 1.0F);
+                                level.addParticle(ParticleTypes.SONIC_BOOM, e.getX(), e.getY(), e.getZ(), 2.0D, 2.0D, 2.0D);
                             }
                         }
                     }
@@ -100,10 +103,13 @@ public class WardianStaff extends Item {
         player.getItemInHand(InteractionHand.MAIN_HAND).setDamageValue(player.getItemInHand(InteractionHand.MAIN_HAND).getDamageValue() + 1);
     }
 
-    private void chargeEcholocation(Level level, Player player, int enchantLvl) {
+    private void chargeEcholocation(Level level, Player player) {
         AtomicInteger covered = new AtomicInteger();
         player.getArmorSlots().forEach(itemStack -> {
-            if (itemStack.is(ModItems.ECHO_NETHERITE_HELMET.get()) || itemStack.is(ModItems.ECHO_NETHERITE_CHESTPLATE.get()) || itemStack.is(ModItems.ECHO_NETHERITE_LEGGING.get()) || itemStack.is(ModItems.ECHO_NETHERITE_BOOTS.get())) {
+            if (itemStack.is(ModItems.ECHO_NETHERITE_HELMET.get()) ||
+                    itemStack.is(ModItems.ECHO_NETHERITE_CHESTPLATE.get()) ||
+                    itemStack.is(ModItems.ECHO_NETHERITE_LEGGING.get()) ||
+                    itemStack.is(ModItems.ECHO_NETHERITE_BOOTS.get())) {
                 covered.getAndAdd(1);
             }
         });
@@ -112,8 +118,8 @@ public class WardianStaff extends Item {
 
         if (covered.get() != 4) {
             level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.WARDEN_HURT, player.getSoundSource(), 1.0F, 1.0F);
-            level.addParticle(ParticleTypes.CRIT, player.getX(), player.getY(), player.getZ(), 0.0D, 0.0D, 0.0D);
-            player.hurt(DamageSource.MAGIC, 1.0F);
+            level.addParticle(ParticleTypes.CRIT, player.getX(), player.getY(), player.getZ(), 2.0D, 2.0D, 2.0D);
+            player.hurt(DamageSource.MAGIC, 1.5F);
             player.displayClientMessage(Component.literal("Equip all Echo Netherite Armor to charge the echolocation without taking damage!").withStyle(ChatFormatting.RED), true);
         }
 

@@ -107,9 +107,7 @@ public class ModTeleporter implements ITeleporter {
         if (d0 == -1.0D) {
             blockpos = (new BlockPos(pos.getX(), Mth.clamp(pos.getY(), 70, this.level.getHeight() - 10), pos.getZ())).immutable();
             Direction direction1 = direction.getClockWise();
-            if (!worldborder.isWithinBounds(blockpos)) {
-                return Optional.empty();
-            }
+            if (!worldborder.isWithinBounds(blockpos)) return Optional.empty();
 
             for(int l1 = -1; l1 < 2; ++l1) {
                 for(int k2 = 0; k2 < 2; ++k2) {
@@ -149,13 +147,9 @@ public class ModTeleporter implements ITeleporter {
         for(int i = -1; i < 3; ++i) {
             for(int j = -1; j < 4; ++j) {
                 offsetPos.setWithOffset(originalPos, directionIn.getStepX() * i + direction.getStepX() * offsetScale, j, directionIn.getStepZ() * i + direction.getStepZ() * offsetScale);
-                if (j < 0 && !this.level.getBlockState(offsetPos).getMaterial().isSolid()) {
-                    return false;
-                }
+                if (j < 0 && !this.level.getBlockState(offsetPos).getMaterial().isSolid()) return false;
 
-                if (j >= 0 && !this.level.isEmptyBlock(offsetPos)) {
-                    return false;
-                }
+                if (j >= 0 && !this.level.isEmptyBlock(offsetPos)) return false;
             }
         }
 
@@ -166,9 +160,7 @@ public class ModTeleporter implements ITeleporter {
     @Override
     public PortalInfo getPortalInfo(Entity entity, ServerLevel level, Function<ServerLevel, PortalInfo> defaultPortalInfo) {
         boolean destinationIsUG = level.dimension() == ModDimensions.WARDENDIM_KEY;
-        if (entity.level.dimension() != ModDimensions.WARDENDIM_KEY && !destinationIsUG) {
-            return null;
-        }
+        if (entity.level.dimension() != ModDimensions.WARDENDIM_KEY && !destinationIsUG) return null;
         else {
             WorldBorder border = level.getWorldBorder();
             double minX = Math.max(-2.9999872E7D, border.getMinX() + 16.0D);
@@ -198,9 +190,7 @@ public class ModTeleporter implements ITeleporter {
 
     protected Optional<BlockUtil.FoundRectangle> getOrMakePortal(Entity entity, BlockPos pos) {
         Optional<BlockUtil.FoundRectangle> existingPortal = this.getExistingPortal(pos);
-        if(existingPortal.isPresent()) {
-            return existingPortal;
-        }
+        if(existingPortal.isPresent()) return existingPortal;
         else {
             Direction.Axis portalAxis = this.level.getBlockState(entity.portalEntrancePos).getOptionalValue(WardenDimPortalBlock.AXIS).orElse(Direction.Axis.X);
             return this.makePortal(pos, portalAxis);
