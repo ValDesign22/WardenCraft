@@ -1,13 +1,16 @@
 package fr.valdesign.wardencraft.entities.custom;
 
 import com.google.common.annotations.VisibleForTesting;
+import fr.valdesign.wardencraft.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Unit;
 import net.minecraft.world.BossEvent;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -24,9 +27,11 @@ import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.warden.AngerLevel;
+import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.monster.warden.WardenAi;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -44,10 +49,9 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.Optional;
 
-//public class WardianEntity extends Monster implements IAnimatable, VibrationListener.VibrationListenerConfig {
 public class WardianEntity extends Monster implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
-    private final ServerBossEvent bossEvent = (ServerBossEvent) (new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(true);
+    private final ServerBossEvent bossEvent = new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS);
 
     public WardianEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -56,8 +60,6 @@ public class WardianEntity extends Monster implements IAnimatable {
         this.setHealth(this.getMaxHealth());
 
         this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
-
-        this.setBoundingBox(this.getBoundingBox().inflate(0.5D, 0.0D, 0.5D));
     }
 
     public static AttributeSupplier setAttributes() {
@@ -68,8 +70,8 @@ public class WardianEntity extends Monster implements IAnimatable {
                 .add(Attributes.MOVEMENT_SPEED, 0.2f)
                 .add(Attributes.ATTACK_KNOCKBACK, 2.0f)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1.0f).build();
-    }
 
+    }
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
@@ -81,6 +83,35 @@ public class WardianEntity extends Monster implements IAnimatable {
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, IronGolem.class, false));
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, WitherBoss.class, false));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Warden.class, false));
+    }
+
+    @Override
+    public void onEnterCombat() {
+        super.onEnterCombat();
+        this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
+    }
+
+    @Override
+    public void startSeenByPlayer(ServerPlayer serverPlayer) {
+        super.startSeenByPlayer(serverPlayer);
+        this.bossEvent.addPlayer(serverPlayer);
+    }
+
+    @Override
+    public void stopSeenByPlayer(ServerPlayer serverPlayer) {
+        super.stopSeenByPlayer(serverPlayer);
+        this.bossEvent.removePlayer(serverPlayer);
+    }
+
+    @Override
+    public boolean hurt(DamageSource damageSource, float fl) {
+        if (super.hurt(damageSource, fl)) {
+            this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
