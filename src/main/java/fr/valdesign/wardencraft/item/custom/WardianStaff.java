@@ -41,10 +41,7 @@ public class WardianStaff extends Item {
         if(!level.isClientSide() && hand == InteractionHand.MAIN_HAND) {
             int enchantLvl = this.getEnchantmentLevel(player.getItemInHand(hand), ModEnchantments.ECHOLOCATION.get());
             if (player.isShiftKeyDown()) chargeEcholocation(level, player);
-            else {
-                echolocate(level, player, enchantLvl);
-                player.getCooldowns().addCooldown(this, 200);
-            }
+            else echolocate(level, player, enchantLvl);
         }
 
         return super.use(level, player, hand);
@@ -67,10 +64,12 @@ public class WardianStaff extends Item {
     public void echolocate(Level level, Player player, int enchantLvl) {
         int range = 10;
         int duration = 100;
+        int cooldown = 200;
 
         if(enchantLvl > 0) {
             range += enchantLvl * 5;
             duration += enchantLvl * 100;
+            cooldown -= enchantLvl * 20;
         }
 
         int rangeSquared = range * range;
@@ -101,6 +100,7 @@ public class WardianStaff extends Item {
         }
 
         player.getItemInHand(InteractionHand.MAIN_HAND).setDamageValue(player.getItemInHand(InteractionHand.MAIN_HAND).getDamageValue() + 1);
+        player.getCooldowns().addCooldown(this, cooldown);
     }
 
     private void chargeEcholocation(Level level, Player player) {

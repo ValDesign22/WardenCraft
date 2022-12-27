@@ -15,8 +15,6 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.VersionChecker;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -52,18 +50,6 @@ public class WardenCraft
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
-
-        VersionChecker.CheckResult result = VersionChecker.getResult(ModList.get().getModFileById(MOD_ID).getMods().get(0));
-
-        if (result.status() == VersionChecker.Status.OUTDATED) {
-            LOGGER.info("WardenCraft is outdated! A new version is available: " + result.url());
-        } else if (result.status() == VersionChecker.Status.BETA_OUTDATED) {
-            LOGGER.info("WardenCraft is outdated! A new beta version is available: " + result.url());
-        } else if (result.status() == VersionChecker.Status.BETA) {
-            LOGGER.info("WardenCraft is outdated! You are using a beta version: " + result.url());
-        } else if (result.status() == VersionChecker.Status.UP_TO_DATE) {
-            LOGGER.info("WardenCraft is up to date!");
-        }
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
